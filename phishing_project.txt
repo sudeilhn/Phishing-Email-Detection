@@ -1,0 +1,21 @@
+phishing_project/
+│
+├── models/
+│   ├── backup/
+│   │   ├── phishing_model_v1.keras
+│   │   └── tokenizer_v1.pkl
+│   ├── phishing_model_lstm.keras
+│   ├── phishing_model_gru.keras
+│   ├── phishing_model_bidirectional_lstm.keras
+│   ├── phishing_model_cnn_lstm.keras
+│   └── tokenizer.pkl
+│
+├── scripts/
+│   ├── train_lstm.py
+│   ├── train_gru.py
+│   ├── train_bidirectional_lstm.py
+│   ├── train_cnn_lstm.py
+│   └── evaluate_models.py
+│
+└── data/
+    └── turkish_phishing_dataset.csv
