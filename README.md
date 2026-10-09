@@ -1,63 +1,105 @@
-# Phishing Email Detection with Deep Learning 🧠📧
 
-Bu proje, oltalama (phishing) e-postalarını tespit etmek amacıyla geliştirilmiş bir makine öğrenmesi uygulamasıdır. LSTM, GRU, CNN-LSTM ve Bidirectional LSTM gibi derin öğrenme modelleri karşılaştırılmıştır.
+# Phishing Email Detection Using Deep Learning
 
-## 📁 Klasörler
-- `data/`: Veri seti
-- `models/`: Eğitilmiş modeller
-- `scripts/`: Eğitim ve tahmin scriptleri
+A deep learning project focused on detecting phishing emails in Turkish-language email data using Natural Language Processing (NLP).
 
-## 📊 Kullanılan Teknolojiler
-- Python, TensorFlow, Keras
-- NLP, Embedding, LSTM
+The project explores and compares **LSTM, Bidirectional LSTM, CNN-LSTM, and GRU** architectures to evaluate their effectiveness in email classification.
 
-## 📌 Amaç
-Gerçek ve oltalama e-postaları ayırt edebilen bir sistem geliştirmek.
+## Overview
 
-⚠️ Not:
-Bu proje geliştirme sürecinde yerel bir ortamda (örneğin Windows işletim sistemi altında Jupyter Notebook ya da Python script dosyaları ile) çalıştırılmıştır. Dosya yolları (örn. veri seti, model dosyaları, ekran görüntüleri vb.) tam yol (absolute path) şeklinde yazılmıştır:
+The goal is to distinguish phishing emails from legitimate messages through deep learning-based text classification.
 
-Örnek:
-C:/Users/kullanici_adi/Desktop/phishing_project/dataset.csv
+- Developed and evaluated 8 model versions.
+- Applied text preprocessing, tokenization, and word embeddings.
+- Compared model performance using accuracy, precision, recall, and F1-score.
+- Analyzed classification behavior and model limitations.
 
-Bu nedenle, projeyi farklı bir bilgisayarda çalıştırmak isteyen kullanıcıların:
+## Technologies
 
-Dosya yollarını kendi bilgisayarlarının dizin yapısına göre güncellemesi,
+**Python | TensorFlow | Keras | Scikit-learn | Pandas | NumPy | NLP**
 
-Tercihen dosya yollarını göreli (relative path) yaparak taşınabilirliği artırması gerekmektedir.
+## Dataset
 
-Önerilen çözüm:
+The project uses a Turkish phishing email dataset containing **7,504 records**.
 
-python
-Kopyala
-Düzenle
-import os
-base_path = os.path.dirname(__file__)
-data_path = os.path.join(base_path, "dataset", "emails.csv")
-Bu yöntemle kod, farklı ortamlarda da çalışabilir hale gelecektir.
+| Category | Emails |
+|---|---:|
+| Phishing | 6,004 |
+| Legitimate | 1,500 |
 
+Email subject, sender, and body are combined for binary classification.
 
-⚠️ Note:
-This project was developed and tested in a local environment (e.g., Windows OS using Jupyter Notebook or Python scripts).
-Therefore, many file paths (such as dataset, model files, screenshots, etc.) are written using absolute paths like:
+## Model Comparison
 
-Example:
-C:/Users/username/Desktop/phishing_project/dataset.csv
+Eight trained model versions were evaluated using the existing dataset.
 
-As a result, running this project on a different machine may cause file path errors unless these paths are updated.
+| Model | Accuracy | Phishing F1-score |
+|---|---:|---:|
+| LSTM v1 | 80.01% | 88.90% |
+| LSTM v2 | 99.93% | 99.96% |
+| BiLSTM v1 | 100.00% | 100.00% |
+| BiLSTM v2 | 99.93% | 99.96% |
+| CNN-LSTM v1 | 78.88% | 88.19% |
+| CNN-LSTM v2 | 100.00% | 100.00% |
+| GRU v1 | 78.88% | 88.19% |
+| GRU v2 | 78.88% | 88.19% |
 
-🛠 How to Fix:
-Update the file paths according to your own directory structure.
+### Key Findings
 
-Alternatively, replace absolute paths with relative paths to make the project portable.
+- **BiLSTM v1 and CNN-LSTM v2** achieved the highest scores in this evaluation.
+- Several baseline models predicted all emails as phishing, highlighting the importance of class-specific metrics.
+- Different architectures and training configurations produced significantly different classification behaviors.
 
-✅ Recommended approach:
+**Evaluation Note:** These results were obtained from previously trained models using the existing dataset. Duplicate records, preprocessing leakage, and differences in evaluation splits may affect the reported scores. They should not be interpreted as independent benchmark results.
 
-python
-Kopyala
-Düzenle
-import os
-base_path = os.path.dirname(__file__)
-data_path = os.path.join(base_path, "dataset", "emails.csv")
-Using this method, the code will be more flexible and compatible across different systems.
+## Project Structure
+
+```text
+Cybersecurity_projects/
+├── data/                 # Turkish phishing dataset
+├── models/
+│   ├── backup/           # Saved models and tokenizers
+│   └── *.py              # Model implementations
+├── scripts/              # Training and prediction scripts
+└── README.md
+```
+
+## Getting Started
+
+Clone the repository:
+
+```bash
+git clone https://github.com/sudeilhn/Cybersecurity_projects.git
+cd Cybersecurity_projects
+```
+
+Install the required libraries:
+
+```bash
+pip install tensorflow pandas numpy scikit-learn matplotlib seaborn
+```
+
+Run a training script, for example:
+
+```bash
+python scripts/train_gru.py
+```
+
+**Note:** Some scripts contain absolute Windows file paths that must be updated before running the project on another computer.
+
+## Future Improvements
+
+- Standardize training and evaluation splits.
+- Remove duplicate records and prevent data leakage.
+- Improve legitimate email detection and reduce false positives.
+- Evaluate model generalization on unseen datasets.
+
+---
+
+## Author
+
+**Sude İlhan** — Computer Engineering Graduate
+
+[GitHub](https://github.com/sudeilhn) | [LinkedIn](https://www.linkedin.com/in/sude-ilhan-591b40278/)
+
 
