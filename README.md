@@ -95,11 +95,3 @@ python scripts/train_gru.py
 - Evaluate model generalization on unseen datasets.
 
 ---
-
-## Author
-
-**Sude İlhan** — Computer Engineering Graduate
-
-[GitHub](https://github.com/sudeilhn) | [LinkedIn](https://www.linkedin.com/in/sude-ilhan-591b40278/)
-
-
